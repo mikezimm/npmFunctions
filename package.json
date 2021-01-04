@@ -1,0 +1,25 @@
+{
+  "name": "@mikezimm/npmfunctions",
+  "version": "0.0.1",
+  "description": "Functions used in my SPFx webparts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepublish": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikezimm/npmFunctions.git"
+  },
+  "keywords": [
+    "SPFx",
+    "functions"
+  ],
+  "author": "Mike Zimmerman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikezimm/npmFunctions/issues"
+  },
+  "homepage": "https://github.com/mikezimm/npmFunctions#readme"
+}
