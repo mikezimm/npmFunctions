@@ -38,7 +38,7 @@ import { ISeriesSort } from './IReUsableInterfaces';
  * @param keyNo 
  * @param delimiter 
  */
-export function stringifyKeyValue( thisOne: any, keyNo, delimiter : string ) {
+export function stringifyKeyValue( thisOne: any, keyNo: any, delimiter : string ) {
 
     return Object.keys(thisOne)[keyNo] + delimiter + thisOne[Object.keys(thisOne)[keyNo]];
 
@@ -75,9 +75,9 @@ export function stringifyKeyValue( thisOne: any, keyNo, delimiter : string ) {
  * @param startAddOrigPos - index to add 'addArray' in sourceArray... this is based on the original array you send, not what is left if you delete some items.
  * @param addArray - array of items to insert into object a specified position.
  */
-export function spliceCopyArray(sourceArray, startDel, countDelete, startAddOrigPos, addArray) {
+export function spliceCopyArray(sourceArray : any[], startDel: number, countDelete: number, startAddOrigPos:  number, addArray: any[]) {
 
-    let whole = [];
+    let whole : any[] = [];
     let skipMin = startDel === null ? "-1000" : startDel ;
     let skipMax = startDel === null ? "-1000" : startDel + countDelete - 1 ; 
     let addedArray = false;
@@ -92,7 +92,8 @@ export function spliceCopyArray(sourceArray, startDel, countDelete, startAddOrig
         if ( i < skipMin ) {
             whole.push(sourceArray[i]);
             addedItem = true; }
-        if ( i == startAddOrigPos ) {
+            let startAddOrigPosTest: any = startAddOrigPos;
+        if ( i == startAddOrigPosTest ) {
             whole = whole.concat(addArray) ;
             addedArray = true; }
        if ( i > skipMax && addedItem === false ) {  whole.push(sourceArray[i]);   }
@@ -125,7 +126,7 @@ export function spliceCopyArray(sourceArray, startDel, countDelete, startAddOrig
  * @param propValue 
  */
 
-export function doesObjectExistInArray(sourceArray, objectProperty : string, propValue, exact : boolean = true ){
+export function doesObjectExistInArray(sourceArray: any[], objectProperty : string, propValue : any, exact : boolean = true ){
 
     let result : boolean | string = false;
 
@@ -182,8 +183,8 @@ export interface ICompareResult {
   *                     Then look for all items in 'inThisArray' which have the value 'Training' in the key 'Title', and apply the method you want to apply.
   */
  export function compareArrays(checkForTheseItems: any [], inThisArray: any [], method: 'AddTag' | 'ReturnNOTFound' | 'ReturnFound', keyToCheck: string, checkDelimiter : string, messsages: 'Console'|'Alert'|'Both'|'None' ) {
-    let compareKey = 'compareArrays';
-    let foundTag = 'Found';
+    let compareKey : any = 'compareArrays';
+    let foundTag: any = 'Found';
     let notFoundTag = 'Not' + foundTag;
     
     let result : ICompareResult = {
@@ -220,7 +221,7 @@ export interface ICompareResult {
     
                 //Loop through all the objects in the 'inThisArray' and process them
                 for (let i in inThisArray){
-                    let objectToUpdate: {} = inThisArray[i];
+                    let objectToUpdate: any = inThisArray[i];
     
                     if ( inThisArray[i][testKey] === testVal ) {
                         //Value was found.... do whatever needs to be done.
@@ -478,7 +479,7 @@ export function sortKeysByOtherKey( obj: any, sortKey: ISeriesSort, order: ISeri
  *                                                                                                                                                                                                                                 
  */
 
-export function removeItemFromArrayOnce(arr, value) {
+export function removeItemFromArrayOnce(arr: any[], value : any) {
     if ( arr === null || arr === undefined ) {
         //Do nothing... 
     } else {
@@ -502,7 +503,7 @@ export function removeItemFromArrayOnce(arr, value) {
  * https://stackoverflow.com/a/5767357                                                                                                                                                                                                                        
  */
 
-export function removeItemFromArrayAll(arr, value) {
+export function removeItemFromArrayAll(arr: any[], value : any) {
     if ( arr === null || arr === undefined ) {
         //Do nothing... 
     } else {
