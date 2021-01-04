@@ -1,6 +1,6 @@
 {
   "name": "@mikezimm/npmfunctions",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Functions used in my SPFx webparts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,5 +21,14 @@
   "bugs": {
     "url": "https://github.com/mikezimm/npmFunctions/issues"
   },
-  "homepage": "https://github.com/mikezimm/npmFunctions#readme"
+  "homepage": "https://github.com/mikezimm/npmFunctions#readme",
+  "dependencies": {
+    "@pnp/spfx-controls-react": "^2.3.0",
+    "@types/es6-promise": "^3.3.0",
+    "@types/webpack-env": "^1.16.0"
+  },
+  "devDependencies": {
+    "@types/es6-promise": "^3.3.0",
+    "@types/webpack-env": "^1.16.0"
+  }
 }
