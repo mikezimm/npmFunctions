@@ -46,9 +46,65 @@ tsc
 npm install @pnp/spfx-controls-react
 npm install @types/webpack-env
 npm install @types/es6-promise
+npm install --save-dev prettier tslint tslint-config-prettier
+```
+NOTE:  added install prettier and tslint line after trying to update version.  Error did not arise when doing inital
+
+### Updates:
+First version update 
+1. Update arrayServices to latest TMT7 file... which added 2 new functions
+2. Deleted dist folder
+3. Ran tsc
+4. Manually updated version to 0.0.3
+5. ran npm publish --access=public
+6. Updated my project, tested in hosted browser and it worked!
+7. Just got all kinds of errors when trying to auto npm version
+
+Ran npm version and got errors below:
+```bash
+> @mikezimm/npmfunctions@0.0.4 preversion C:\Users\mike.zimmerman\projects\Git\npmFunctions
+> npm run lint
+
+
+> @mikezimm/npmfunctions@0.0.3 lint C:\Users\mike.zimmerman\projects\Git\npmFunctions
+> tslint -p tsconfig.json
+
+module.js:549
+    throw err;
+    ^
+
+Error: Cannot find module 'typescript'
+    at Function.Module._resolveFilename (module.js:547:15)
+    at Function.Module._load (module.js:474:25)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (C:\Users\mike.zimmerman\projects\Git\npmFunctions\node_modules\tslint\lib\linter.js:23:10)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! @mikezimm/npmfunctions@0.0.3 lint: `tslint -p tsconfig.json`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the @mikezimm/npmfunctions@0.0.3 lint script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\mike.zimmerman\AppData\Roaming\npm-cache\_logs\2021-01-05T15_30_51_438Z-debug.log
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! @mikezimm/npmfunctions@0.0.4 preversion: `npm run lint`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the @mikezimm/npmfunctions@0.0.4 preversion script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
 ```
 
-### Attempting to get my src into dist folder
+
+### Original attempts to get my src into dist folder
 ```bash
 
 gulp build //did not work
