@@ -468,7 +468,7 @@ export interface IQuickButton {
   export type ICSSChartTypes = 'pareto-asc' | 'pareto-dec' | 'pareto-labels' | 'stacked-column-labels' | 'stacked-column-dec' | 'stacked-column-asc' | 'kpi-tiles';
   export const CSSChartTypes : ICSSChartTypes[] = ['pareto-asc' , 'pareto-dec' , 'pareto-labels' , 'stacked-column-labels' , 'stacked-column-dec' , 'stacked-column-asc'];
 
-  export type ISeriesSort = 'asis' | 'labels' | 'asc' | 'dec' | string ;
+  export type ISeriesSort = 'asis' | 'labels' | 'asc' | 'dec' | string | null ;
 
   export interface ICSSChartSeries {
     title: string;

@@ -454,7 +454,8 @@ export function sortObjectArrayByNumberKey( arr: any[], order: ISeriesSort, key:
 
 export function sortKeysByOtherKey( obj: any, sortKey: ISeriesSort, order: ISeriesSort, dataType: 'number' | 'string', otherKeys: string[]) {
 
-    let sortCopy : any[] = JSON.parse(JSON.stringify(obj[sortKey]));
+    let sortKeyAny: any = sortKey;
+    let sortCopy : any[] = JSON.parse(JSON.stringify(obj[sortKeyAny]));
     let otherKeyArrays : any = {};
     otherKeys.map( m => { otherKeyArrays[m] = [] ; } );
     
@@ -466,7 +467,7 @@ export function sortKeysByOtherKey( obj: any, sortKey: ISeriesSort, order: ISeri
 
     let x = 0;
     for ( let v of sortCopy) {
-      let currentIndex = obj[sortKey].indexOf(v); //Get index of the first sortable value in original array
+      let currentIndex = obj[sortKeyAny].indexOf(v); //Get index of the first sortable value in original array
       let i = 0;
       otherKeys.map( key => {
         if ( obj[key] ) {
@@ -475,7 +476,7 @@ export function sortKeysByOtherKey( obj: any, sortKey: ISeriesSort, order: ISeri
             console.log('sortKeysByOtherKey: Unable to push obj[key][currentIndex] because obj[key] does not exist!', obj,key,currentIndex );
         }
       });
-      obj[sortKey][currentIndex] = null;
+      obj[sortKeyAny][currentIndex] = null;
       x ++;
     }
   
@@ -485,7 +486,7 @@ export function sortKeysByOtherKey( obj: any, sortKey: ISeriesSort, order: ISeri
 
     }); 
   
-    obj[sortKey] = sortCopy;
+    obj[sortKeyAny] = sortCopy;
 
     return obj;
   
