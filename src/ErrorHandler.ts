@@ -39,6 +39,10 @@ export function getHelpfullError(e : any, alertMe = true, consoleLog = true){
     friendlyMessage = 'Common causes:  Saving a Url Object or JSON Object to string column.';
   }
 
+  if (result.indexOf("The formula contains a syntax error or is not supported.") > -1 ) { 
+    friendlyMessage = 'Common causes:  You have a formula that is not valid.';
+  }
+
   if (result.indexOf('An unexpected \'PrimitiveValue\' node was found when reading from the JSON reader. A \'StartObject\' node was expected') > -1 ) { 
     friendlyMessage = 'Common causes:  Saving a string to a URL column, saving text to multi-select choice column.';
   }
