@@ -118,6 +118,8 @@ export interface IUser {
   tertiaryText?: string; //                           From React People Picker control
   secondaryText?: string; // same as email;           From React People Picker control
 
+  ensureWeb?: string;
+
 }
 
 export interface IMyFonts{
