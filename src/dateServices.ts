@@ -17,6 +17,29 @@
  *                                                                                               
  */
 
+ /**
+  * Functions in this file
+  * 
+  * export interface ITheTime
+  * export function  getOffSetDayOfWeek
+  * export function  getOffSetDayOfWeek
+  * export function  getDayOfWeek
+  * export function isStringValidDate
+  * export function ISO8601_week_no
+  * export function makeTheTimeObject
+  * export function makeSmallTimeObject
+  * export function getLocalMonths
+  * export function getDayTimeToMinutes
+  * export function getTimeSpan
+  * export function getBestTimeDelta
+  * export function getTimeDelta
+  * export function getAge
+  * export function getGreeting
+  * export function getNicks
+  * export function createDeltaDateArrays
+  * 
+  */
+
 import { IUser} from './IReUsableInterfaces';
 
 export const msPerMin = 60000;
@@ -122,8 +145,60 @@ export interface ITheTime {
 const xxx = 'Sunshine';
 const zzz = 'Zimmerman';
 
-//https://stackoverflow.com/questions/4156434/javascript-get-the-first-day-of-the-week-from-current-date
-function getDayOfWeek( d : any ,sunOrMon: string ) {
+
+
+  /**
+   * This is similar to getDayOfWeek except more complex:
+   * 
+   *  Function does not adjust the timestamp.
+   *  So if the day number is the same even if it's earlier or later, it will return the date you originally passed in.
+   * 
+   *  You can pass in any day number (0 for Sunday) and which = prior or next.
+   *  0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday
+   *  
+   *  Which = prior:
+   *  Say today is Wednesday and you request day 2, that would return Tuesday (yesterday)
+   *  say today is Wednesday and you request day 4, that would return LAST Thursday because that is the first prior Thursday.
+   * 
+   *  Which = next:
+   *  Say today is Wednesday and you request day 2, that will return NEXT Tuesday
+   *  Say today is Wednesday and you request day 4, that will return tommorrow.
+   * 
+   * Pass in a date, the day number to get and wether it's prior or future and it will get the date.
+   * @param d 
+   * @param day 
+   * @param which 
+   */
+    //This will be in npmfunctions in v.0.0.5
+    export function  getOffSetDayOfWeek ( d : string, day: number, which: 'prior' | 'next' ) {
+      //First get current day number of week
+      let theDate = new Date( d );
+      let dayOfWeek = theDate.getDay();
+      if ( dayOfWeek === day ) {
+        return theDate; 
+
+      } else {
+        let deltaDays = which === 'prior' ? -dayOfWeek :  7 - dayOfWeek ;
+        let deltaMS = deltaDays * msPerDay;
+        let adjustedTime = theDate.getTime() + deltaMS;
+        let adjustedDate = new Date( adjustedTime );
+
+        return adjustedDate;
+      }
+    } 
+
+/**
+ * This was built for TrackMyTime and will get the Sunday or Monday of the week of 'd'.
+ * It returns the prior Sunday or prior Monday.
+ * 
+ * Similarly getOffSetDayOfWeek can do this but it can uses different calculation
+ * 
+ * Based upon:  https://stackoverflow.com/questions/4156434/javascript-get-the-first-day-of-the-week-from-current-date
+ * 
+ * @param d 
+ * @param sunOrMon 
+ */
+export function getDayOfWeek( d : any ,sunOrMon: string ) {
 
   let d1 = new Date(d);
   let diff;
@@ -173,7 +248,6 @@ export function isStringValidDate( test: string, type : 'zulu' | 'us' | 'eu' | '
   return result;
 
 }
-
 
 //https://www.w3resource.com/javascript-exercises/javascript-date-exercise-24.php
 export function ISO8601_week_no( dt : any ) 

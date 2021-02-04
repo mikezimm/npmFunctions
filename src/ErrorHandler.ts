@@ -29,9 +29,21 @@ export function getHelpfullError(e : any, alertMe = true, consoleLog = true){
         errObj = JSON.parse(result);
       }
   }
-  result = errObj != null ? errObj['odata.error']['message']['value'] : e.message != null ? e.message : e;
+
+  if ( errObj === null ) {
+    result = 'Unknown error... Sorry :(';
+  } else if ( errObj['odata.error'] ) {
+    result = errObj != null ? errObj['odata.error']['message']['value'] : e.message != null ? e.message : e;
+  } else if ( errObj['message'] ) {
+    result = errObj != null ? errObj['message']['value'] : e.message != null ? e.message : e;
+  }
+
   let friendlyMessage = null;
   let detailItem = null;
+
+  // Error making HttpClient request in queryable [404] ::>
+
+  if (result.indexOf('Access denied') > -1 ) { friendlyMessage = 'Double check your access to this resource.'; }
   if (result.indexOf('Failed to fetch') > -1 ) { friendlyMessage = 'This can happen if the web url is not valid.'; }
   if (result.indexOf('A null value was detected in the items of a collection property value') > -1 ) { friendlyMessage= 'This can happen if you are saving a null value where an array is expected... Maybe try saving an empty array instead :).'; }
 
@@ -75,6 +87,10 @@ export function getHelpfullError(e : any, alertMe = true, consoleLog = true){
   if (result.indexOf('does not exist on type') > -1 &&  result.indexOf('ListItem\'') > -1  && result.indexOf('The property') > -1 ) {
     if ( friendlyMessage != null ) { friendlyMessage += ' AND '; } else { friendlyMessage = ''; }
     friendlyMessage += 'Column: ' + result.split('\'')[1] + ' does not exist on list!';
+  }
+
+  if ( friendlyMessage === null && e.indexOf( 'Error making HttpClient request in queryable [404]' ) > -1 ) {
+    friendlyMessage = 'Check your site or list URL to make sure it is valid.';
   }
 
   let returnMess = friendlyMessage === null ? result : 'Ohh Snap!\n' + friendlyMessage + ' \n-- FULL ERROR MESSAGE: \n' + result ;
