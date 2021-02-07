@@ -43,6 +43,8 @@ export function getHelpfullError(e : any, alertMe = true, consoleLog = true){
 
   // Error making HttpClient request in queryable [404] ::>
 
+  if ( result.indexOf("A 'PrimitiveValue' node with non-null value was found when trying to read the value of a navigation property") > -1 ) { friendlyMessage = 'Your Item object may have mis-identied a User column.  BE SURE user column is followed by Id such as:  EditorId'; }
+
   if (result.indexOf('Access denied') > -1 ) { friendlyMessage = 'Double check your access to this resource.'; }
   if (result.indexOf('Failed to fetch') > -1 ) { friendlyMessage = 'This can happen if the web url is not valid.'; }
   if (result.indexOf('A null value was detected in the items of a collection property value') > -1 ) { friendlyMessage= 'This can happen if you are saving a null value where an array is expected... Maybe try saving an empty array instead :).'; }
