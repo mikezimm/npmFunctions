@@ -56,6 +56,7 @@ export interface IPickedWebBasic {
   guid: string;
   url: string;
   siteIcon: string;
+  error?: string;
 }
 
 export interface IPickedList {
@@ -63,6 +64,13 @@ export interface IPickedList {
   name: string;
   guid: string;
   isLibrary: boolean;
+}
+
+
+export interface IPickedView {
+  title: string;
+  name: string;
+  guid: string;
 }
 
 export interface IMyProgress {
