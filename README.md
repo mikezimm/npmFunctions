@@ -50,6 +50,23 @@ npm install --save-dev prettier tslint tslint-config-prettier
 ```
 NOTE:  added install prettier and tslint line after trying to update version.  Error did not arise when doing inital
 
+
+
+
+### General Update process:
+1. Update version in package.json
+2. Update version in package-lock.json
+3. Delete dist folder
+4. Run tsc
+5. npm whoami
+6. npm login - if neccessary
+7. Run npm publish --access=public
+
+### To use specific version
+npm install @mikezimm/npmfunctions@0.0.10
+
+
+
 ### Updates:
 First version update 
 1. Update arrayServices to latest TMT7 file... which added 2 new functions
@@ -59,6 +76,8 @@ First version update
 5. ran npm publish --access=public
 6. Updated my project, tested in hosted browser and it worked!
 7. Just got all kinds of errors when trying to auto npm version
+
+
 
 Ran npm version and got errors below:
 ```bash
