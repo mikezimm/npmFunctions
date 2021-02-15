@@ -577,7 +577,7 @@ export function getMaxPropOfKeyInObjectArray( arr: any[], key: string, find: 'ma
     for (let i in arr){
 
         let checkKeyVal = arr[i][key];
-        let filterKeyVal = arr[i][filterKey];
+        let filterKeyVal = filterKey !== undefined ? arr[i][filterKey] : 'Undefined';
         
         let validTest = true;
 
