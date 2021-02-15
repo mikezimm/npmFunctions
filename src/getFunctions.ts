@@ -1,3 +1,4 @@
+//2021-02-14:  Copied from GridCharts
 
 /**
  * 2020-09-28:  getFunctions.ts intro
