@@ -185,6 +185,10 @@ export function createFetchList(webURL: string, parentListURL: string, title: st
       }
   }
 
+  //Always add these by default
+  if ( expandDates.indexOf('Created') < 0 ) { expandDates.push('Created') } ;
+  if ( expandDates.indexOf('Modified') < 0 ) { expandDates.push('Modified') } ;
+
   let list: IZBasicList = {
       title: title,
       name: name,
