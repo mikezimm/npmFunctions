@@ -58,7 +58,9 @@ NOTE:  added install prettier and tslint line after trying to update version.  E
 2. Update version in package-lock.json
 3. Delete dist folder
 4. Run tsc
-5. Run npm publish --access=public
+5. npm whoami
+6. npm login - if neccessary
+7. Run npm publish --access=public
 
 
 
