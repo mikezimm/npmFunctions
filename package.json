@@ -1,6 +1,6 @@
 {
   "name": "@mikezimm/npmfunctions",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Functions used in my SPFx webparts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
