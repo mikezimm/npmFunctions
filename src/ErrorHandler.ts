@@ -20,17 +20,32 @@
  
 export function getHelpfullError(e : any, alertMe = true, consoleLog = true){
   if ( consoleLog === true ) { console.log('getHelpfullError:',e); }
-  let result = 'e';
+
+  /**
+   *  If you change result from 'e', be sure to update in if ( errObj === null...
+   */
+  let result = 'e'; 
+
   let errObj: any = null;
     if (e.message) {
       let loc1 = e.message.indexOf("{\"");
+
       if (loc1 > 0) {
         result = e.message.substring(loc1);
         errObj = JSON.parse(result);
+
+      } else if ( e.message.indexOf('Error making HttpClient request in queryable [404]')) {
+        result = 'Error making HttpClient request in queryable [404]';
+
+      } else if ( e.message.indexOf('Failed to fetch')) {
+        result = 'Failed to fetch';
+
+      } else if ( e.message !== null || e.message !== undefined ) {
+        result = e.message;
       }
   }
 
-  if ( errObj === null ) {
+  if ( errObj === null && result !== 'e' ) {
     result = 'Unknown error... Sorry :(';
   } else if ( errObj['odata.error'] ) {
     result = errObj != null ? errObj['odata.error']['message']['value'] : e.message != null ? e.message : e;
@@ -91,9 +106,13 @@ export function getHelpfullError(e : any, alertMe = true, consoleLog = true){
     friendlyMessage += 'Column: ' + result.split('\'')[1] + ' does not exist on list!';
   }
 
-  if ( friendlyMessage === null && e.indexOf( 'Error making HttpClient request in queryable [404]' ) > -1 ) {
-    friendlyMessage = 'Check your site or list URL to make sure it is valid.';
-  }
+  if ( friendlyMessage === null ) {
+    if ( e.indexOf( 'Error making HttpClient request in queryable [404]' ) > -1 ) {
+      friendlyMessage = 'Check your site or list URL to make sure it is valid. Error [404]';
+    } else if ( e.indexOf( 'Failed to fetch' ) > -1 ) {
+      friendlyMessage = 'Failed to fetch:  Check to make sure your Url has the right domain (domain = to the left of /sites/)';
+    }
+}
 
   let returnMess = friendlyMessage === null ? result : 'Ohh Snap!\n' + friendlyMessage + ' \n-- FULL ERROR MESSAGE: \n' + result ;
   
