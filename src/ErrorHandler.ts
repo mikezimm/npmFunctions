@@ -45,7 +45,7 @@ export function getHelpfullError(e : any, alertMe = true, consoleLog = true){
       }
   }
 
-  if ( errObj === null && result !== 'e' ) {
+  if ( errObj === null && result === 'e' ) {
     result = 'Unknown error... Sorry :(';
   } else if ( errObj['odata.error'] ) {
     result = errObj != null ? errObj['odata.error']['message']['value'] : e.message != null ? e.message : e;
