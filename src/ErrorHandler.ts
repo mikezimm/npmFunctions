@@ -45,12 +45,14 @@ export function getHelpfullError(e : any, alertMe = true, consoleLog = true){
       }
   }
 
-  if ( errObj === null && result !== 'e' ) {
-    result = 'Unknown error... Sorry :(';
-  } else if ( errObj['odata.error'] ) {
-    result = errObj != null ? errObj['odata.error']['message']['value'] : e.message != null ? e.message : e;
-  } else if ( errObj['message'] ) {
-    result = errObj != null ? errObj['message']['value'] : e.message != null ? e.message : e;
+  if ( result === 'e' ) { //Then it didn't find 404 or Failed to Fetch
+    if ( errObj === null ) {
+      result = 'Unknown error... Sorry :(';
+    } else if ( errObj['odata.error'] ) {
+      result = errObj != null ? errObj['odata.error']['message']['value'] : e.message != null ? e.message : e;
+    } else if ( errObj['message'] ) {
+      result = errObj != null ? errObj['message']['value'] : e.message != null ? e.message : e;
+    }
   }
 
   let friendlyMessage = null;
@@ -82,6 +84,10 @@ export function getHelpfullError(e : any, alertMe = true, consoleLog = true){
     friendlyMessage = 'Missing column: ' + result.split('\'')[1]; 
   }
 
+  if (result.indexOf('does not exist.') > -1 && result.indexOf('field or property') > -1 ) { 
+    friendlyMessage = 'Missing column: ' + result.split('\'')[1]; 
+  }
+
   if (result.indexOf('does not exist') > -1 && result.indexOf('List') === 0) { 
     friendlyMessage = 'List : ' + result.split('\'')[1] + ' does not exist on this site: ' + result.split('\'')[4]; 
   }
@@ -106,10 +112,15 @@ export function getHelpfullError(e : any, alertMe = true, consoleLog = true){
     friendlyMessage += 'Column: ' + result.split('\'')[1] + ' does not exist on list!';
   }
 
+  if (result.indexOf('does not exist at site with URL') > -1 &&  result.indexOf('List \'') > -1 ) {
+    if ( friendlyMessage != null ) { friendlyMessage += ' AND '; } else { friendlyMessage = ''; }
+    friendlyMessage += 'List or Library: ' + result.split('\'')[1] + ' does not exist on site!  Maybe try List Name or List Title instead?';
+  }
+
   if ( friendlyMessage === null ) {
-    if ( e.indexOf( 'Error making HttpClient request in queryable [404]' ) > -1 ) {
+    if ( result.indexOf( 'Error making HttpClient request in queryable [404]' ) > -1 ) {
       friendlyMessage = 'Check your site or list URL to make sure it is valid. Error [404]';
-    } else if ( e.indexOf( 'Failed to fetch' ) > -1 ) {
+    } else if ( result.indexOf( 'Failed to fetch' ) > -1 ) {
       friendlyMessage = 'Failed to fetch:  Check to make sure your Url has the right domain (domain = to the left of /sites/)';
     }
 }

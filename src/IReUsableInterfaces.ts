@@ -103,9 +103,10 @@ export interface IMyProgress {
 
 export interface IMyPivCat {
   title: string;
-  desc: string;
+  desc: any; //Changed from string to any to allow elements
   order: number;
-  count: number;
+  count?: number; //2021-02-17:  Added for Easy Contents
+  icon?: string; //2021-02-17:  Added for Easy Contents
 }
 
 export interface IPivot {

@@ -10,7 +10,7 @@
  */
 // ensure(title: string, desc?: string, template?: number, enableContentTypes?: boolean, additionalSettings?: Partial<IListInfo>): Promise<IListEnsureResult>;
 
-export function notify(statusLog : IServiceLog | any, verb : any, status: any, step : any, f: any, returnField: any, checkValue = null, noAlert = false) {
+export function notify(statusLog : IServiceLog | any, verb : any, status: any, step : any, f: any, returnField: any, checkValue : any = null, noAlert = false) {
     if ( f == null ) { f = {name:''} ; }
     let thisItem = f == null ? null : f.name ? f.name : f.Title;
 
