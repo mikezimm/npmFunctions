@@ -90,6 +90,11 @@ export function getHelpfullError(e : any, alertMe = true, consoleLog = true){
 
   if (result.indexOf('does not exist') > -1 && result.indexOf('List') === 0) { 
     friendlyMessage = 'List : ' + result.split('\'')[1] + ' does not exist on this site: ' + result.split('\'')[4]; 
+    
+  }
+  if (result.indexOf('does not exist') > -1 && result.indexOf('The file') === 0) { 
+    friendlyMessage = 'The file does not exist.  Double check to make sure it is still there :).' + result.split('\'')[4]; 
+    
   }
 
   if (result.indexOf('document library with the specified title already exists') > -1 ) { friendlyMessage = 'List with title already exists.'; }
