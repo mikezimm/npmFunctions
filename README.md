@@ -63,7 +63,7 @@ NOTE:  added install prettier and tslint line after trying to update version.  E
 7. Run npm publish --access=public
 
 ### To use specific version
-npm install @mikezimm/npmfunctions@0.0.17
+npm install @mikezimm/npmfunctions@0.0.18
 
 
 
