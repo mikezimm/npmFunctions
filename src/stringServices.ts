@@ -17,9 +17,6 @@
  *                                                                                               
  */
 
-import * as React from 'react';
-
-
 import { sortStringArray , sortNumberArray } from './arrayServices';
 
 /***
@@ -75,6 +72,34 @@ export function camelize(str : string ,firstCap: boolean) {
   }
 
 /***
+ *    d888888b .d8888.       d888b  db    db d888888b d8888b. 
+ *      `88'   88'  YP      88' Y8b 88    88   `88'   88  `8D 
+ *       88    `8bo.        88      88    88    88    88   88 
+ *       88      `Y8b.      88  ooo 88    88    88    88   88 
+ *      .88.   db   8D      88. ~8~ 88b  d88   .88.   88  .8D 
+ *    Y888888P `8888Y'       Y888P  ~Y8888P' Y888888P Y8888D' 
+ *                                                            
+ *                                                            
+ */
+  
+export function isGuid( testMe: string ) {
+  //Regex courtesy of:  https://stackoverflow.com/a/13653180/4210807
+  let validGuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  let result : boolean = false;
+
+  if ( testMe === undefined || testMe === null || testMe.length < 22 ) {
+      result = false;
+
+  } else {
+      result = validGuidRegex.exec(testMe) ? true : false;
+  }
+
+  return result;  
+
+}
+
+
+/***
  *    d8888b.  .d8b.  d8b   db d8888b.  .d88b.  .88b  d88. d888888b d88888D d88888b       .o88b.  .d8b.  .d8888. d88888b 
  *    88  `8D d8' `8b 888o  88 88  `8D .8P  Y8. 88'YbdP`88   `88'   YP  d8' 88'          d8P  Y8 d8' `8b 88'  YP 88'     
  *    88oobY' 88ooo88 88V8o 88 88   88 88    88 88  88  88    88       d8'  88ooooo      8P      88ooo88 `8bo.   88ooooo 
@@ -97,7 +122,7 @@ export function camelize(str : string ,firstCap: boolean) {
       } else { result = str; }
       return result;
   }
-  
+
 
 /***
  *     .o88b. db      d88888b  .d8b.  d8b   db      .d8888. d8888b.      db      d888888b .d8888. d888888b      db    db d8888b. db      
