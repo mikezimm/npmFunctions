@@ -22,7 +22,8 @@
   * 
   * export interface ITheTime
   * export function  getOffSetDayOfWeek
-  * export function  getOffSetDayOfWeek
+  * export function  getYearMonthLabel
+  * export function  getYearWeekLabel
   * export function  getDayOfWeek
   * export function isStringValidDate
   * export function ISO8601_week_no
@@ -186,6 +187,36 @@ const zzz = 'Zimmerman';
         return adjustedDate;
       }
     } 
+
+    /**
+     * Created for GridCharts
+     * @param theDate 
+     */
+    export function getYearMonthLabel ( theDate : Date ) {
+
+      let year = theDate.getFullYear();
+      let month = theDate.getMonth();
+      let monthNo = ( month + 1 ).toString();
+      let monthLabel : any = year + ' : ' + monthNo + '-' + monthStr3["en-us"][month];
+
+      return monthLabel;
+
+    }
+
+    /**
+     * Created for GridCharts  
+     * @param theDate 
+     */
+    export function getYearWeekLabel ( theDate : Date ) {
+
+      let year = theDate.getFullYear();
+      let weekNo = ISO8601_week_no(theDate).toString();
+      if ( weekNo.length === 1 ) { weekNo = "0" + weekNo; }
+      let weekLabel : any = year + ' :  w' + weekNo ;
+      return weekLabel;
+
+    }
+
 
 /**
  * This was built for TrackMyTime and will get the Sunday or Monday of the week of 'd'.
