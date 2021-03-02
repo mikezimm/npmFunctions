@@ -15,6 +15,22 @@
  * 
  */
 
+ /***
+ *    db   d8b   db  .d8b.  d8888b. d8b   db d888888b d8b   db  d888b       db db db 
+ *    88   I8I   88 d8' `8b 88  `8D 888o  88   `88'   888o  88 88' Y8b      88 88 88 
+ *    88   I8I   88 88ooo88 88oobY' 88V8o 88    88    88V8o 88 88           YP YP YP 
+ *    Y8   I8I   88 88~~~88 88`8b   88 V8o88    88    88 V8o88 88  ooo               
+ *    `8b d8'8b d8' 88   88 88 `88. 88  V888   .88.   88  V888 88. ~8~      db db db 
+ *     `8b8' `8d8'  YP   YP 88   YD VP   V8P Y888888P VP   V8P  Y888P       YP YP YP 
+ *                                                                                   
+ *                                                                                  
+  * WARNING ON Using SystemLists array:
+  * If you are using this entire array to build rest filter query, it will cause a 404 error because the length of the query string becomes to long.
+  * From trial and error, I found that 1500 charaters in the string for a short site URL did not throw an error.  But due to unkowns, be cautious and maybe
+  *     only include 1350 or less characters in the rest filter and manually filter out the rest.
+  * AS OF 2021-03-01 version (v0.0.0.25, 1500 characters means do not include anything starting with OData and beyond.)
+  */
+
 //2020-11-17:  Copied from genericSolution listsFunctions.ts
 //Usage:  if ( SystemLists.indexOf(theList.EntityTypeName) > -1 ) { ... }
 export const SystemLists = ["WorkflowTasks", "Style Library",
@@ -30,6 +46,8 @@ export const SystemLists = ["WorkflowTasks", "Style Library",
 
 "OData__catalogs/hubsite","OData__catalogs/MaintenanceLogs",
 
+"Content and Structure Reports", //The static name for this is Reports List and because Reports could be normal list, I'm not going to filter for it.
+"Apps for SharePoint", "AppCatalog",
 ];
 
 /**
