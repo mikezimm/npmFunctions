@@ -189,6 +189,15 @@ const zzz = 'Zimmerman';
     } 
 
     /**
+     * Copied from PivotTiles
+     * @param date :  Format = new Date() or new Date(2015, 1, 21)
+     */
+    export function getQuarter(date : Date) {
+      var month = date.getMonth() + 1;
+      return (Math.ceil(month / 3));
+    }
+
+    /**
      * Created for GridCharts
      * @param theDate 
      */
