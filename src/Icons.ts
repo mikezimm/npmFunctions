@@ -4,6 +4,8 @@
  * jiraIcon
  * defaultHubIcon
  * defaultHubIcon2
+ * 
+ * Converted pfsIcon and fpsLogo here: https://www.base64-image.de/
  * fpsIcon125  17.5k
  * fpsLogo125  12.4k
  * fpsLogo326  19.9k
