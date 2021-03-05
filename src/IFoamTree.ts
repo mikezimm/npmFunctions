@@ -22,7 +22,8 @@ export type IRolloutMethod = 'groups' | 'individual';  //https://get.carrotsearc
 
 
 export interface IFoamTree {
-
+    id?: string;
+    
     dataObject: IFoamTreeDataObject;
 
     layout: IFoamTreeLayout;  // VERIFIED!  https://get.carrotsearch.com/foamtree/demo/api/index.html#layout
