@@ -126,6 +126,11 @@ export function spliceCopyArray(sourceArray : any[], startDel: number, countDele
  * @param propValue 
  */
 
+export function doesObjectExistInArrayInt(sourceArray: any[], objectProperty : string, propValue : any, exact : boolean = true ){
+    let result = doesObjectExistInArray(sourceArray, objectProperty, propValue, exact );
+    if ( result === false ) { return -1 } else { return parseInt( result ) ; }
+}
+
 export function doesObjectExistInArray(sourceArray: any[], objectProperty : string, propValue : any, exact : boolean = true ){
 
     let result : boolean | string = false;
