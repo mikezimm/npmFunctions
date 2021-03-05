@@ -232,6 +232,11 @@ export interface IFoamTree {
 export interface  IFoamTreeGroup {
     label: string;
     weight: number;
+    count?: number;
+    sum?: number;
+    avg?: number;
+    min?: number;
+    max?: number;
     trigger?: boolean;
     open?: boolean;
     selected?: boolean;
