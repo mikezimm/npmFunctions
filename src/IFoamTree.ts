@@ -10,6 +10,10 @@ export type IFoamTreeLayout = 'relaxed' | 'ordered' | 'squarified' ;    // VERIF
 export type IFoamTreeFillType = 'none' | 'plain' | 'gradient' ;
 export type IFoamTreeStacking = 'hierarchical' | 'flattened';  //https://get.carrotsearch.com/foamtree/demo/api/index.html#stacking
 
+export const FoamTreeLayouts : IFoamTreeLayout[] = [ 'relaxed', 'ordered', 'squarified' ];
+export const FoamTreeFillType : IFoamTreeFillType[] = ['none' , 'plain' , 'gradient'];
+export const FoamTreeStacking : IFoamTreeStacking[] = ['hierarchical' , 'flattened'];  //https://get.carrotsearch.com/foamtree/demo/api/index.html#stacking
+
 export type IDescriptionGroup = 'auto' | 'always';  //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroup
 export type IDescriptionGroupType = 'stab' | 'floating';  //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupType
 
@@ -19,6 +23,9 @@ export type IGroupGrowingEasing = 'linear' | 'bounce' | 'squareIn' | 'squareOut'
 
 export type IRolloutStartPoint = 'center' | 'topleft' | 'bottomright' | 'random' ;  //https://get.carrotsearch.com/foamtree/demo/api/index.html#rolloutStartPoint
 export type IRolloutMethod = 'groups' | 'individual';  //https://get.carrotsearch.com/foamtree/demo/api/index.html#rolloutMethod
+
+export const RolloutStartPoint : IRolloutStartPoint[] = [ 'center', 'topleft', 'bottomright', 'random' ];
+export const RolloutMethod : IRolloutMethod[] = ['groups' , 'individual' ];
 
 
 export interface IFoamTree {
