@@ -17,6 +17,8 @@ export const FoamTreeStacking : IFoamTreeStacking[] = ['hierarchical' , 'flatten
 export type IDescriptionGroup = 'auto' | 'always';  //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroup
 export type IDescriptionGroupType = 'stab' | 'floating';  //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupType
 
+export const DescriptionGroupType : IDescriptionGroupType[] = ['stab' , 'floating' ];
+
 export type IRelaxationInitializer = 'fisheye' | 'blackhole' | 'ordered' | 'squarified' | 'random' ;  //https://get.carrotsearch.com/foamtree/demo/api/index.html#relaxationInitializer
 
 export type IGroupGrowingEasing = 'linear' | 'bounce' | 'squareIn' | 'squareOut' | 'squareInOut' | 'cubicIn' | 'cubicOut' | 'cubicInOut' | 'quadIn' | 'quadOut' | 'quadInOut' ;  //https://get.carrotsearch.com/foamtree/demo/api/index.html#groupGrowingEasing
@@ -57,6 +59,7 @@ export interface IFoamTree {
     maxGroupLabelLevelsDrawn?: number;  //Start with drawing just the top-level groups   https://get.carrotsearch.com/foamtree/demo/api/index.html#maxGroupLabelLevelsDrawn
 
     descriptionGroup?: IDescriptionGroup;     //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroup
+    descriptionGroupType: IDescriptionGroupType;     //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupType
     descriptionGroupSize?: 0 | 1 ;  //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupSize
     descriptionGroupMinHeight?: number;  // [0,infinity) https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupMinHeight
     descriptionGroupMaxHeight?: number;  // [0,infinity) https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupMaxHeight

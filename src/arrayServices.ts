@@ -619,3 +619,39 @@ export function getMaxPropOfKeyInObjectArray( arr: any[], key: string, find: 'ma
     return bestValue;
 
 }
+
+/**
+ *  Typical use case:  arr = ['a','b','c' ]
+ *  getNextElementInArray( arr, 'b', 'next, true, 'notfound' ) returns 'c'
+ *  getNextElementInArray( arr, 'c', 'next, true, 'notfound' ) returns 'a'
+ * 
+ * @param arr array should be either numbers or strings, not objects
+ * @param current item to search for
+ * @param direction direction to search for
+ * @param roll true = if it's the last item and you pick 'next' it will get the first item in array etc.
+ * @param notFound = return result if not found ( either because current is not in array or roll === false and it's at an end )
+ */
+export function getNextElementInArray( arr: any[], current: any, direction: 'next' | 'prev' , roll : boolean, notFound: any ) {
+    let result: any = null;
+    let idx = arr.indexOf(current);
+
+    if ( arr.length === 0 || idx === -1 ) { result = notFound; } 
+    else if ( arr.length === 1 ) { result = roll === true ? arr[0] : notFound; }
+
+    else if ( idx === 0  )  { //This is first item in the array
+        if ( direction === 'next' ) { result = arr[1]; }
+         else { result = roll === true ? arr.length - 1 : notFound; } }
+
+    else if ( idx === arr.length - 1 ) { //This is the last item in the array
+        if ( direction === 'prev' ) { result = arr[idx - 1]; }
+        else { result = roll === true ? arr[0] : notFound; } }
+
+    else { //This is the last item in the array
+        result = arr[ direction === 'next' ? idx + 1 : idx - 1 ] ;
+
+    
+    }
+    if ( result === notFound ) { console.log(' ERROR in getNextElementInArray', arr, current, direction, roll, notFound ) ; }
+    return result;
+
+}
