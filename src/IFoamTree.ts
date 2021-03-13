@@ -60,7 +60,9 @@ export interface IFoamTree {
 
     descriptionGroup?: IDescriptionGroup;     //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroup
     descriptionGroupType?: IDescriptionGroupType;     //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupType
-    descriptionGroupSize?: 0 | 1 ;  //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupSize
+    descriptionGroupSize?: number ;  //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupSize
+    groupLabelLineHeight?: number ;  //https://get.carrotsearch.com/foamtree/demo/api/index.html#groupLabelLineHeight
+    attributionPosition?: number ;  //https://get.carrotsearch.com/foamtree/demo/api/index.html#attributionPosition
     descriptionGroupMinHeight?: number;  // [0,infinity) https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupMinHeight
     descriptionGroupMaxHeight?: number;  // [0,infinity) https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupMaxHeight
     descriptionGroupPosition?: number;  // [0,360) https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupPosition
