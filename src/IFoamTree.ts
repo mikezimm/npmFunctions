@@ -59,7 +59,7 @@ export interface IFoamTree {
     maxGroupLabelLevelsDrawn?: number;  //Start with drawing just the top-level groups   https://get.carrotsearch.com/foamtree/demo/api/index.html#maxGroupLabelLevelsDrawn
 
     descriptionGroup?: IDescriptionGroup;     //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroup
-    descriptionGroupType: IDescriptionGroupType;     //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupType
+    descriptionGroupType?: IDescriptionGroupType;     //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupType
     descriptionGroupSize?: 0 | 1 ;  //https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupSize
     descriptionGroupMinHeight?: number;  // [0,infinity) https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupMinHeight
     descriptionGroupMaxHeight?: number;  // [0,infinity) https://get.carrotsearch.com/foamtree/demo/api/index.html#descriptionGroupMaxHeight
